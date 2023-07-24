@@ -65,11 +65,11 @@ public class WebController {
         return "jsp-file";
     }
 
-    @RequestMapping("users")
+    @RequestMapping("raw-users")
     public String users(ModelMap model) {
         List<User> users = userJpaRepository.findAll();
         model.addAttribute("users", users);
-        return "users";
+        return "raw-users";
     }
 
 }
