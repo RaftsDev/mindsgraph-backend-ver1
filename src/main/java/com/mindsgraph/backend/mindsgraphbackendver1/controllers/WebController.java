@@ -1,10 +1,15 @@
 package com.mindsgraph.backend.mindsgraphbackendver1.controllers;
 
+import com.mindsgraph.backend.mindsgraphbackendver1.entities.User;
+import com.mindsgraph.backend.mindsgraphbackendver1.repository.UserJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class WebController {
@@ -12,6 +17,14 @@ public class WebController {
 
     //Logger
     private Logger logger = LoggerFactory.getLogger(getClass());
+
+    public WebController(UserJpaRepository userJpaRepository) {
+        super();
+        this.userJpaRepository = userJpaRepository;
+    }
+
+    private UserJpaRepository userJpaRepository;
+
 
     @RequestMapping("/")
     @ResponseBody
@@ -51,4 +64,12 @@ public class WebController {
     public String landingPageJsp() {
         return "jsp-file";
     }
+
+    @RequestMapping("users")
+    public String users(ModelMap model) {
+        List<User> users = userJpaRepository.findAll();
+        model.addAttribute("users", users);
+        return "users";
+    }
+
 }
