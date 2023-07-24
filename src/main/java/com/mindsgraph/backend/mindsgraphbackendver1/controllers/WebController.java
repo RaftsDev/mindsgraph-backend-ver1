@@ -18,11 +18,11 @@ public class WebController {
     //Logger
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    //Wiring UserJpaRepository
     public WebController(UserJpaRepository userJpaRepository) {
         super();
         this.userJpaRepository = userJpaRepository;
     }
-
     private UserJpaRepository userJpaRepository;
 
 
