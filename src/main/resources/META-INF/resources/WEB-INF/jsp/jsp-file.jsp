@@ -1,8 +1,5 @@
-<html>
-	<head>
-		<title> My JSP Page </title>
-	</head>
-	<body>
+<%@ include file="common/header.jspf" %>
+
 		My JSP page with body for Mindsgraph-backend version 1
-	</body>
-</html>
+
+<%@ include file="common/footer.jspf" %>
