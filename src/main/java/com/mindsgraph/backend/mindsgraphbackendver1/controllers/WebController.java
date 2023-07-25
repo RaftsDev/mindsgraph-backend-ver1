@@ -66,10 +66,17 @@ public class WebController {
     }
 
     @RequestMapping("raw-users")
-    public String users(ModelMap model) {
+    public String rawUsers(ModelMap model) {
         List<User> users = userJpaRepository.findAll();
         model.addAttribute("users", users);
         return "raw-users";
+    }
+
+    @RequestMapping("users")
+    public String users(ModelMap model) {
+        List<User> users = userJpaRepository.findAll();
+        model.addAttribute("users", users);
+        return "users";
     }
 
 }
