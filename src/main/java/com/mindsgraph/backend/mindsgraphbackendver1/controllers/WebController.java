@@ -88,4 +88,11 @@ public class WebController {
         model.addAttribute("tasks", tasks);
         return "raw-tasks";
     }
+
+    @RequestMapping("tasks")
+    public String tasks(ModelMap model) {
+        List<Task> tasks = taskJpaRepository.findAll();
+        model.addAttribute("tasks", tasks);
+        return "tasks";
+    }
 }
