@@ -22,18 +22,12 @@ public class WebController {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     //Wiring UserJpaRepository
-    public WebController(UserJpaRepository userJpaRepository) {
+    public WebController(UserJpaRepository userJpaRepository, TaskJpaRepository taskJpaRepository ) {
         super();
         this.userJpaRepository = userJpaRepository;
-    }
-    private UserJpaRepository userJpaRepository;
-
-
-    //Wiring TaskJpaRepository
-    public WebController(TaskJpaRepository taskJpaRepository) {
-        super();
         this.taskJpaRepository = taskJpaRepository;
     }
+    private UserJpaRepository userJpaRepository;
     private TaskJpaRepository taskJpaRepository;
     @RequestMapping("/")
     @ResponseBody
