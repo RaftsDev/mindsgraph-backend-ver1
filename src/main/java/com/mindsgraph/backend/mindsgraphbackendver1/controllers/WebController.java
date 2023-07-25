@@ -1,9 +1,12 @@
 package com.mindsgraph.backend.mindsgraphbackendver1.controllers;
 
+import com.mindsgraph.backend.mindsgraphbackendver1.entities.Task;
 import com.mindsgraph.backend.mindsgraphbackendver1.entities.User;
+import com.mindsgraph.backend.mindsgraphbackendver1.repository.TaskJpaRepository;
 import com.mindsgraph.backend.mindsgraphbackendver1.repository.UserJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,12 @@ public class WebController {
     private UserJpaRepository userJpaRepository;
 
 
+    //Wiring TaskJpaRepository
+    public WebController(TaskJpaRepository taskJpaRepository) {
+        super();
+        this.taskJpaRepository = taskJpaRepository;
+    }
+    private TaskJpaRepository taskJpaRepository;
     @RequestMapping("/")
     @ResponseBody
     public String mainPage() {
@@ -79,4 +88,10 @@ public class WebController {
         return "users";
     }
 
+    @RequestMapping("raw-tasks")
+    public String rawTasks(ModelMap model) {
+        List<Task> tasks = taskJpaRepository.findAll();
+        model.addAttribute("tasks", tasks);
+        return "raw-tasks";
+    }
 }
