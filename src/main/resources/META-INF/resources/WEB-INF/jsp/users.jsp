@@ -1,9 +1,9 @@
 <%@ include file="common/header.jspf" %>
 
-		My JSP page with body for Mindsgraph-backend version 1
-<br>
+		<h1>My JSP page with body for Mindsgraph-backend version 1.</h1>
 
-				<table>
+<div class="container">
+				<table class="table">
         			<tr>
         				<th>Id</th>
         				<th>First name</th>
@@ -18,5 +18,5 @@
         			    </tr>
         			</c:forEach>
         		</table>
-
+<container>
 <%@ include file="common/footer.jspf" %>
